@@ -26,6 +26,12 @@ Shopware.Component.register('sw-media-display-options', () => import('./componen
 Shopware.Component.register('sw-media-breadcrumbs', () => import('./component/sw-media-breadcrumbs'));
 Shopware.Component.register('sw-media-library', () => import('./component/sw-media-library'));
 Shopware.Component.register('sw-media-modal-v2', () => import('./component/sw-media-modal-v2'));
+
+Shopware.Component.extend(
+    'sw-media-modal-extend-v2',
+    'sw-media-modal-v2',
+    () => import('./component/sw-media-modal-extend-v2'),
+);
 /* eslint-enable max-len, sw-deprecation-rules/private-feature-declarations */
 
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations
