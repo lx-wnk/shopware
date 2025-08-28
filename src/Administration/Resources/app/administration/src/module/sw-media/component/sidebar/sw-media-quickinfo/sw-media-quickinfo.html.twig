@@ -1,4 +1,5 @@
 {% block sw_media_quickinfo %}
+<!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events, vuejs-accessibility/no-static-element-interactions -->
 <div class="sw-media-quickinfo">
     {% block sw_media_quickinfo_broken_file %}
     <mt-banner
@@ -105,6 +106,27 @@
                     />
                     {{ $tc('sw-media.sidebar.actions.copyLink') }}
                 </li>
+                {% endblock %}
+
+                {% block sw_media_quickinfo_quickactions_custom_action %}
+                <template v-if="extensionSdkButtons.length > 0 && item.hasFile">
+                    <li
+                        v-for="action in extensionSdkButtons"
+                         :key="action.id"
+                        class="sw-media-sidebar__quickaction quickaction--custom"
+                        role="button"
+                        tabindex="0"
+                        @click="runAppAction(action)"
+                        @keydown.enter="runAppAction(action)"
+                    >
+                        <mt-icon
+                            size="16px"
+                            name="regular-tools-alt"
+                            class="sw-media-sidebar__quickactions-icon"
+                        />
+                        {{ $tc(action.label) }}
+                    </li>
+                </template>
                 {% endblock %}
 
                 {% block sw_media_quickinfo_quickactions_delete %}
