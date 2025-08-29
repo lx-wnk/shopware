@@ -243,10 +243,16 @@ class EntityDefinitionQueryHelper
             $referenceDefinition = $field->getToManyReferenceDefinition();
         }
 
+        $root = $root . '.' . $field->getPropertyName();
+
+        if ($root === $original) {
+            return $field;
+        }
+
         return static::getField(
             $original,
             $referenceDefinition,
-            $root . '.' . $field->getPropertyName(),
+            $root,
             $resolveTranslated
         );
     }
