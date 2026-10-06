@@ -74,7 +74,7 @@ class IntegrationDefinition extends EntityDefinition
             (new StringField('label', 'label'))->addFlags(new Required())->setDescription('Label given to Integration.'),
             (new StringField('access_key', 'accessKey'))->addFlags(new Required())->setDescription('Access key to store api.'),
             (new PasswordField('secret_access_key', 'secretAccessKey'))->addFlags(new Required())->setDescription('Secret key required for secure communication.'),
-            (new DateTimeField('last_usage_at', 'lastUsageAt'))->setDescription('Date and time when teh integration was last used.'),
+            (new DateTimeField('last_usage_at', 'lastUsageAt'))->setDescription('Date and time when the integration was last used.'),
             // The regular Admin API CRUD endpoint authorizes elevated admin changes in the controller; direct DAL writes remain write-protected.
             // @see \Shopware\Core\Framework\Api\Controller\IntegrationController
             (new BoolField('admin', 'admin'))->addFlags((new WriteProtected(Context::SYSTEM_SCOPE))->allowWriteThroughAdminApi())->setDescription('When boolean value is `true`, it indicates this is a administrative integration that requires elevated permissions.'),

@@ -74,7 +74,7 @@ class ThemeService implements ResetInterface
 
     /**
      * Only compiles a single theme/saleschannel combination.
-     * Use `compileThemeById` to compile all dependend saleschannels
+     * Use `compileThemeById` to compile all dependent sales channels
      */
     public function compileTheme(
         string $salesChannelId,
@@ -156,7 +156,7 @@ class ThemeService implements ResetInterface
     }
 
     /**
-     * Compiles all dependend saleschannel/Theme combinations
+     * Compiles all dependent sales channel/theme combinations
      *
      * @return list<string>
      */
