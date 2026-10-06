@@ -26,7 +26,7 @@
         },
         "sorting-modal": {
           "modalTitle": "Priorität der Steuerservice-Anbieter ändern",
-          "subTitle": "Verwenden Sie Drag & Drop, um zu sortieren. Der oberste Eintrag hat die höchste Priorität.",
+          "subTitle": "Verwende Drag & Drop, um zu sortieren. Der oberste Eintrag hat die höchste Priorität.",
           "saveSuccessful": "Die Prioritäten der Steueranbieter wurden gespeichert.",
           "errorMessage": "Ein Fehler ist beim Speichern aufgetreten."
         }
@@ -68,7 +68,7 @@
     "taxProviderDetail": {
       "textHeadline": "Steueranbieter",
       "infoTitle": "Endgültige Steuerberechnung nur im Checkout",
-      "infoText": "Dies kann sich auf die Regeln Ihres Warenkorbs auswirken. Prüfen Sie Versandmethoden, Verfügbarkeitsregeln und ähnliches.",
+      "infoText": "Dies kann sich auf die Regeln Deines Warenkorbs auswirken. Prüfe Versandmethoden, Verfügbarkeitsregeln und ähnliches.",
       "cardTitleSettings": "Einstellungen",
       "cardTitleAvailability": "Verfügbarkeit",
       "labelPriority": "Priorität",

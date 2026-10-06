@@ -197,7 +197,7 @@
       "error": {
         "themeCompile": {
           "title": "Das Theme konnte nicht kompiliert werden",
-          "message": "Das Theme konnte nicht kompiliert werden. Bitte prüfen Sie die vollständige Fehlermeldung, um dieses Problem zu beheben."
+          "message": "Das Theme konnte nicht kompiliert werden. Bitte prüfe die vollständige Fehlermeldung, um dieses Problem zu beheben."
         },
         "invalidConfiguration": {
           "title": "Ungültige Konfiguration",

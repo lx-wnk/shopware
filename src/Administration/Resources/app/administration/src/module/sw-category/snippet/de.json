@@ -64,11 +64,11 @@
         "buttonConfigureHome": "Startseite konfigurieren",
         "types": {
           "labelMainNavigation": "Hauptnavigation",
-          "helpTextMainNavigation": "Der Einstiegspunkt für die Hauptnavigation ist ein Pflichtfeld für Verkaufskanäle. Wenn Sie diese Kategorie als Einstiegspunkt für die Hauptnavigation einem oder mehreren Verkaufskanälen zuordnen, können Sie diese Zuordnung nur am Verkaufskanal selbst ändern.",
+          "helpTextMainNavigation": "Der Einstiegspunkt für die Hauptnavigation ist ein Pflichtfeld für Verkaufskanäle. Wenn Du diese Kategorie als Einstiegspunkt für die Hauptnavigation einem oder mehreren Verkaufskanälen zuordnest, kannst Du diese Zuordnung nur am Verkaufskanal selbst ändern.",
           "labelFooterNavigation": "Footernavigation",
-          "helpTextFooterNavigation": "Wenn Sie diese Kategorie als Einstiegspunkt für die Footernavigation zu einem oder mehreren Verkaufskanälen zuweisen, werden die Kategorien auf der nächsten Ebene zu Spalten. So können Sie Ihre Footernavigation in mehrere Bereiche unterteilen.",
+          "helpTextFooterNavigation": "Wenn Du diese Kategorie als Einstiegspunkt für die Footernavigation einem oder mehreren Verkaufskanälen zuweist, werden die Kategorien auf der nächsten Ebene zu Spalten. So kannst Du Deine Footernavigation in mehrere Bereiche unterteilen.",
           "labelServiceNavigation": "Footer-Service-Navigation",
-          "helpTextServiceNavigation": "Wenn Sie diese Kategorie als Einstiegspunkt für die Servicenavigation zu einem oder mehreren Verkaufskanälen zuweisen, werden die Kategorien der nächsten Ebene als zweite Navigation im Fußbereich angezeigt."
+          "helpTextServiceNavigation": "Wenn Du diese Kategorie als Einstiegspunkt für die Servicenavigation einem oder mehreren Verkaufskanälen zuweist, werden die Kategorien der nächsten Ebene als zweite Navigation im Fußbereich angezeigt."
         }
       },
       "entry-point-modal": {

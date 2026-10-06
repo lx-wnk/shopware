@@ -13,7 +13,7 @@
       "messageEmptyTitle": "Keine Produkte ausgewählt",
       "messageEmptySubline": "Gehe zurück und wähle Produkte aus.",
       "alertInheritance": {
-        "message": "Diese Varianten besitzen vererbte Felder. Der Inhalt der vererbten Felder wird vom jeweiligen Hauptprodukt übernommen. Sie können Vererbungen aktivieren und deaktivieren, indem Sie auf das Kettensymbol anklicken."
+        "message": "Diese Varianten besitzen vererbte Felder. Der Inhalt der vererbten Felder wird vom jeweiligen Hauptprodukt übernommen. Du kannst Vererbungen aktivieren und deaktivieren, indem Du auf das Kettensymbol klickst."
       },
       "alertRestrictedFields": {
         "title": "Eingeschränkte Mehrfachänderung",

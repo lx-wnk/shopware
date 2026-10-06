@@ -142,7 +142,7 @@
       "activationSuccessDescription": "Viel Spaß beim Stöbern im Shopware Store.",
       "label": "Jetzt verfügbar",
       "activationDescriptionTitleFirst": "Erweiterungen einfach entdecken und kaufen -",
-      "activationDescriptionTitleSecond": "direkt aus Ihrem eigenen Shopware-Shop heraus.",
+      "activationDescriptionTitleSecond": "direkt aus Deinem eigenen Shopware-Shop heraus.",
       "activationDescriptionTitleDescription": "Aktiviere den Shopware Store und erhalte Zugriff auf viele hilfreiche Erweiterungen und moderne Themes, die Du nahtlos in Deinen Shop integrieren kannst - ganz ohne Programmierkenntnisse.",
       "activate": "Aktivieren"
     },
@@ -282,7 +282,7 @@
         "installedLabel": "Installiert:",
         "installExtensionLabel": "Installieren",
         "labelAcceptAndInstall": "Akzeptieren und installieren",
-        "allowDisableTooltip": "Diese App verwendet eigene Datenstrukturen, die sich auf Ihr System auswirken. Die App kann daher nicht deaktiviert werden.",
+        "allowDisableTooltip": "Diese App verwendet eigene Datenstrukturen, die sich auf Dein System auswirken. Die App kann daher nicht deaktiviert werden.",
         "contextMenu": {
           "getHelpLabel": "Hilfe anfragen",
           "seeDetailsLabel": "Details ansehen",
