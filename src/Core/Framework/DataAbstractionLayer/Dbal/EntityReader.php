@@ -310,7 +310,7 @@ class EntityReader implements EntityReaderInterface
             // add sub select for many to many field
             if ($field instanceof ManyToManyAssociationField) {
                 /**
-                 * When the association is filtered or sorted we do a seperate query to load the ids of the association.
+                 * When the association is filtered or sorted we do a separate query to load the ids of the association.
                  * Therefore we do not need to add the select here to the main query.
                  *
                  * @see self::loadManyToManyWithCriteria()

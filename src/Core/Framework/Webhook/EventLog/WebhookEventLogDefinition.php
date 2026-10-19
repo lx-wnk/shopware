@@ -70,7 +70,7 @@ class WebhookEventLogDefinition extends EntityDefinition
             (new StringField('delivery_status', 'deliveryStatus'))->addFlags(new Required())->setDescription('Parameter that records \\\"success or failed\\\" status of the event.'),
             (new IntField('timestamp', 'timestamp'))->setDescription('Time at which the event occurred.'),
             (new IntField('processing_time', 'processingTime'))->setDescription('Time the event took to process.'),
-            (new StringField('app_version', 'appVersion'))->setDescription('Version of teh app.'),
+            (new StringField('app_version', 'appVersion'))->setDescription('Version of the app.'),
             (new JsonField('request_content', 'requestContent'))->setDescription('Represents the content sent as part of the Request.'),
             (new JsonField('response_content', 'responseContent'))->setDescription('Represents the content sent as part of the Response.'),
             (new IntField('response_status_code', 'responseStatusCode'))->setDescription('HTTP status codes that are typically generated to provide informational (1xx), successful (2xx), redirection (3xx), client error (4xx), or server error (5xx) responses.'),

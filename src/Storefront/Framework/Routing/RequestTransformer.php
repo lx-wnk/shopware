@@ -433,7 +433,7 @@ class RequestTransformer implements RequestTransformerInterface
     }
 
     /**
-     * We don't have to add the trailing slash when we check if the pathInfo contains teh base url
+     * We don't have to add the trailing slash when we check if the pathInfo contains the base url
      */
     private function containsBaseUrl(string $seoPathInfo, string $baseUrl): bool
     {

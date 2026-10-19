@@ -116,7 +116,7 @@ class AmountCalculator
     }
 
     /**
-     * Calculates the amount for a net based delivery, but gross prices has be be payed
+     * Calculates the amount for a net based delivery, but gross prices have to be paid
      * `CalculatedPrice::netPrice` contains the summed net prices.
      * `CalculatedPrice::price` contains the summed net prices plus amount of calculated taxes
      * Calculated taxes are based on the net prices
