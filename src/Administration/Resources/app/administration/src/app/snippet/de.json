@@ -659,7 +659,7 @@
       "placeholderTypeSearchField": "Alle {entity} durchsuchen ...",
       "placeholderShortcutInfo": "Tipp: Über die \"f\"-Taste, kannst Du die Suche schneller öffnen.",
       "placeholderSearchShortcutInfo": "<strong>Tipp:</strong> Drücke <span>f</span> um die Suche von überall zu öffnen.",
-      "placeholderESSearchShortcutInfo": "<strong>Tipp:</strong> Um genauere Ergebnisse zu erhalten können Sie die <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#simple-query-string-syntax\" target=\"_blank\">Elasticsearch Abfragen</a> verwenden.",
+      "placeholderESSearchShortcutInfo": "<strong>Tipp:</strong> Um genauere Ergebnisse zu erhalten, kannst Du die <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#simple-query-string-syntax\" target=\"_blank\">Elasticsearch Abfragen</a> verwenden.",
       "moduleFiltersHeadline": "Modulfilter",
       "placeholderFilterShortcutInfo": "Tippe <span>#produkte</span> in die Suche ein, um den Modulfilter zu setzen.",
       "searchTypeAll": "Alle",
@@ -1614,8 +1614,8 @@
       "sw-app-actions": {
         "messageErrorFetchButtons": "Es ist ein Fehler beim Laden der App-Actions aufgetreten.",
         "closeWindow": "Fenster schließen",
-        "iframeModalConfirmMessage": "Möchten Sie \"{title}\" wirklich schließen?",
-        "iframeModalConfirmMessageDescription": "Bitte stellen Sie sicher, dass alle Prozesse abgeschlossen sind.",
+        "iframeModalConfirmMessage": "Möchtest Du \"{title}\" wirklich schließen?",
+        "iframeModalConfirmMessageDescription": "Bitte stelle sicher, dass alle Prozesse abgeschlossen sind.",
         "dontAskMeAgain": "Mich nicht erneut fragen"
       },
       "sw-app-shop-id-change-modal": {
@@ -1814,8 +1814,8 @@
     },
   "sw-request-consent-modal": {
     "title": "Zustimmung erforderlich",
-    "message": "Die Erweiterung {appName} bittet um Ihre Zustimmung für das folgende Thema: {consentName}",
-    "readMore": "Weitere Informationen finden Sie hier:",
+    "message": "Die Erweiterung {appName} bittet um Deine Zustimmung für das folgende Thema: {consentName}",
+    "readMore": "Weitere Informationen findest Du hier:",
     "acceptButton": "Zustimmen",
     "declineButton": "Ablehnen",
     "updateFailed": "Beim Aktualisieren Deiner Zustimmung ist ein Fehler aufgetreten. Es wird Deine vorherige Entscheidung, falls vorhanden, beibehalten."

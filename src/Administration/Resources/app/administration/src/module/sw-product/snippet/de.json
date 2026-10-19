@@ -224,7 +224,7 @@
       "labelTitle": "Titel",
       "modal": {
         "confirmTitle": "Bewertung löschen",
-        "confirmText": "Möchten Sie diese Bewertung wirklich löschen?"
+        "confirmText": "Möchtest Du diese Bewertung wirklich löschen?"
       },
       "messageEmptyTitle": "Produkt noch nicht bewertet",
       "messageEmptySubline": "Sieh Dir stattdessen die Bewertungen anderer Produkte an.",
@@ -394,13 +394,13 @@
         "is-download": "digital"
       },
       "generatedListDeleteModalMessage": "Möchtest Du die Variante löschen?",
-      "generatedListDeleteModalMessagePlural": "Möchten Sie diese Varianten löschen?",
+      "generatedListDeleteModalMessagePlural": "Möchtest Du diese Varianten löschen?",
       "generatedListMessageSaveSuccess": "Die Variante wurde gespeichert.",
       "generatedListMessageSaveError": "Die Variante konnte nicht gespeichert werden.",
       "generatedListMessageDeleteErrorCanonicalUrl": "Die Variante konnte nicht gelöscht werden, da sie als Canonical-URL-Template dient.",
       "generatedListMessageDeleteSuccess": "Die Variante wurde gelöscht.",
-      "generatedListMessageDeleteError": "Ein unerwarteter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite, um es erneut zu versuchen.",
-      "generatedListMessageGenerateError": "Ein unerwarteter Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite, um es erneut zu versuchen.",
+      "generatedListMessageDeleteError": "Ein unerwarteter Fehler ist aufgetreten. Bitte aktualisiere die Seite, um es erneut zu versuchen.",
+      "generatedListMessageGenerateError": "Ein unerwarteter Fehler ist aufgetreten. Bitte aktualisiere die Seite, um es erneut zu versuchen.",
       "overview": {
         "filterReset": "Zurücksetzen",
         "filter": "Filtern",

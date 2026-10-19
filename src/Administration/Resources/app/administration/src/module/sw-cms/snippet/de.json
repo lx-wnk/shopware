@@ -807,7 +807,7 @@
           "label": "HTML"
         }
       },
-      "blockDisableState": "Dieser Block ist auf keinem Gerät sichtbar. Sie können den Block bearbeiten, aber die Änderungen werden in Ihrem Shop nicht sichtbar sein. Bearbeiten Sie dieses Layout im Modul Einkaufserlebnisse, um die Sichtbarkeit des Blocks zu ändern."
+      "blockDisableState": "Dieser Block ist auf keinem Gerät sichtbar. Du kannst den Block bearbeiten, aber die Änderungen werden in Deinem Shop nicht sichtbar sein. Bearbeite dieses Layout im Modul Einkaufserlebnisse, um die Sichtbarkeit des Blocks zu ändern."
     },
     "components": {
       "setDefaultLayoutModal": {
@@ -833,8 +833,8 @@
         "labelShopPages": "Shopseiten",
         "confirmChangesTextCategories": "Du hast Layout-Zuweisungen von Kategorie entfernt. Wenn Du diese Änderungen bestätigst, ist für diese Kategorien kein Layout mehr zugewiesen.",
         "confirmChangesTextCategoriesAssignedLayouts": "Einigen der ausgewählten Kategorien ist bereits ein Layout zugewiesen. Wenn Du fortfährst, werden die bestehenden Zuweisungen durch das aktuelle Layout ersetzt.",
-        "confirmChangesTextProducts": "Sie haben Layoutzuweisungen aus Produkten entfernt. Wenn Sie diese Änderungen bestätigen, ist diesen Produkten kein Layout mehr zugewiesen.",
-        "confirmChangesTextProductsAssignedLayouts": "Einige der ausgewählten Produkte haben bereits ein Layout zugewiesen. Wenn Sie fortfahren, werden die vorherigen Zuweisungen durch das aktuelle Layout ersetzt.",
+        "confirmChangesTextProducts": "Du hast Layoutzuweisungen aus Produkten entfernt. Wenn Du diese Änderungen bestätigst, ist diesen Produkten kein Layout mehr zugewiesen.",
+        "confirmChangesTextProductsAssignedLayouts": "Einige der ausgewählten Produkte haben bereits ein Layout zugewiesen. Wenn Du fortfährst, werden die vorherigen Zuweisungen durch das aktuelle Layout ersetzt.",
         "confirmChangesTextShopPages": "Du hast Layout-Zuweisungen von Shopseiten entfernt. Wenn Du diese Änderungen bestätigst, ist für diese Shopseiten kein Layout mehr zugewiesen.",
         "confirmChangesTextLandingPages": "Du hast Layout-Zuweisungen von Landingpages entfernt. Wenn Du diese Änderungen bestätigst, ist für diese Landingpages kein Layout mehr zugewiesen.",
         "confirmChangesTextLandingPagesAssignedLayouts": "Einigen der ausgewählten Landingpages ist bereits ein Layout zugewiesen. Wenn Du fortfährst, werden die bestehenden Zuweisungen durch das aktuelle Layout ersetzt.",

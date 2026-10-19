@@ -41,7 +41,7 @@
       "title": "Such-Einstellungen",
       "alert_elasticsearch": {
         "title": "Elasticsearch ist nun aktiviert",
-        "text": "Sie haben die elasticsearch für den Admin-Bereich aktiviert, diese Felder sind durchsuchbar und können nicht deaktiviert werden. Sie können aber die Entitäten, die durchsuchbar sind, deaktivieren"
+        "text": "Du hast Elasticsearch für den Admin-Bereich aktiviert, diese Felder sind durchsuchbar und können nicht deaktiviert werden. Du kannst aber die Entitäten, die durchsuchbar sind, deaktivieren"
       },
       "cardSearchBehavior": {
         "title": "Suchverhalten",
