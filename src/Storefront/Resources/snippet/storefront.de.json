@@ -84,7 +84,7 @@
     "indexLinkService": "Service/Hilfe",
     "searchNoResult": "Keine Suchergebnisse gefunden.",
     "wishlist": "Merkzettel",
-    "wishlistAriaLiveTemplate": "Du hast %counter% Produkte auf dem Merkzettel",
+    "wishlistAriaLiveTemplate": "Sie haben %counter% Produkte auf dem Merkzettel",
     "navigationAriaLabel": "Hauptnavigation",
     "topBarAriaLabel": "Shop-Einstellungen",
     "languageTrigger": "Sprache ändern (%lang% ist die aktuelle Sprache)",
@@ -145,7 +145,7 @@
     "CHECKOUT__ORDER_ORDER_ALREADY_PAID": "Die Bestellung mit der Bestellnummer \"%orderNumber%\" wurde bereits bezahlt und kann nicht nachträglich bearbeitet werden.",
     "CHECKOUT__ORDER_ORDER_CANCELLED": "Die Bestellung mit der Bestellnummer \"%orderNumber%\" wurde storniert und kann nicht nachträglich bearbeitet werden.",
     "CHECKOUT__ORDER_ORDER_NOT_FOUND": "Diese Bestellung konnte nicht gefunden werden.",
-    "CHECKOUT__CART_HASH_MISMATCH": "Produkte oder Preise in Deinem Warenkorb haben sich möglicherweise geändert. Bitte überprüfe den Warenkorb, bevor Du die Bestellung aufgibst.",
+    "CHECKOUT__CART_HASH_MISMATCH": "Produkte oder Preise in Ihrem Warenkorb haben sich möglicherweise geändert. Bitte überprüfen Sie den Warenkorb, bevor Sie die Bestellung aufgeben.",
     "CHECKOUT__CART_INVALID_LINE_ITEM_QUANTITY": "Die angegebene Menge (%quantity%) ist ungültig.",
     "urlNotAllowed": "Bitte geben Sie in diesem Feld keine URL ein."
   },
@@ -702,23 +702,23 @@
       "errors": {
         "desktopNotSupported": {
           "reason": "Augmented Reality wird auf Desktop-Geräten nicht unterstützt.",
-          "solution": "Bitte öffne diese Seite auf Deinem Mobilgerät, um AR zu starten."
+          "solution": "Bitte öffnen Sie diese Seite auf Ihrem Mobilgerät, um AR zu starten."
         },
         "notSafariOnIOS": {
           "reason": "Augmented Reality wird auf iOS nur in Safari unterstützt.",
-          "solution": "Bitte verwende Safari um AR zu nutzen."
+          "solution": "Bitte verwenden Sie Safari, um AR zu nutzen."
         },
         "IOSVersionMismatch": {
           "reason": "Augmented Reality wird auf iOS-Versionen unter 12.0 nicht unterstützt.",
-          "solution": "Bitte verwende eine neuere iOS-Version, um AR zu starten."
+          "solution": "Bitte verwenden Sie eine neuere iOS-Version, um AR zu starten."
         },
         "unknownIOSError": {
           "reason": "Ein unbekannter Fehler ist während des Starts von AR auf iOS aufgetreten.",
-          "solution": "Bitte versuche es erneut oder wende Dich an unseren Support."
+          "solution": "Bitte versuchen Sie es erneut oder wenden Sie sich an unseren Support."
         },
         "unknownARError": {
           "reason": "Ein unbekannter Fehler ist während des Starts von AR aufgetreten.",
-          "solution": "Bitte versuche es erneut oder wende Dich an unseren Support."
+          "solution": "Bitte versuchen Sie es erneut oder wenden Sie sich an unseren Support."
         }
       }
     },
@@ -846,7 +846,7 @@
     },
     "cms": {
       "video": {
-        "notSupported": "Dein Browser unterstützt das Abspielen von HTML5-Videos nicht.",
+        "notSupported": "Ihr Browser unterstützt das Abspielen von HTML5-Videos nicht.",
         "ariaLabelPlay": "Video abspielen"
       },
       "vimeo": {
