@@ -354,6 +354,35 @@ class FileFetcherTest extends TestCase
         ];
     }
 
+    #[DataProvider('unsupportedProtocolUrlDataProvider')]
+    public function testFetchFromURLRejectsUnsupportedProtocols(string $url): void
+    {
+        $httpClient = new MockHttpClient(static function (): MockResponse {
+            self::fail('No request must be issued for an unsupported protocol');
+        });
+
+        $fileFetcher = $this->createFileFetcher(fileService: new FileService(), httpClient: $httpClient);
+
+        $this->expectExceptionObject(MediaException::unsupportedUrlProtocol($url));
+
+        $fileFetcher->fetchFromURL($url, self::TEMP_FILE, self::IMAGE_EXTENSION);
+    }
+
+    public static function unsupportedProtocolUrlDataProvider(): \Generator
+    {
+        yield 'ftp' => ['ftp://ftp.example.com/file.jpg'];
+        yield 'sftp' => ['sftp://ftp.example.com/file.jpg'];
+    }
+
+    public function testFetchFromURLRejectsMalformedUrls(): void
+    {
+        $fileFetcher = $this->createFileFetcher(fileService: new FileService());
+
+        $this->expectExceptionObject(MediaException::invalidUrl('no url'));
+
+        $fileFetcher->fetchFromURL('no url', self::TEMP_FILE, self::IMAGE_EXTENSION);
+    }
+
     public function testFetchRequestDataThrowsWhenDestinationStreamCannotBeOpened(): void
     {
         $fileFetcher = $this->createFileFetcher();

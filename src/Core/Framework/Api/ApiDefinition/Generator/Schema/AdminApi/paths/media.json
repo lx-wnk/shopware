@@ -148,7 +148,7 @@
                                 ],
                                 "properties": {
                                     "url": {
-                                        "description": "The url of the media file that will be downloaded.",
+                                        "description": "The url of the media file that will be downloaded. Only `http` and `https` URLs are supported.",
                                         "type": "string"
                                     }
                                 },
@@ -260,7 +260,7 @@
                                 "properties": {
                                     "url": {
                                         "type": "string",
-                                        "description": "URL of the file to download and upload"
+                                        "description": "URL of the file to download and upload. Only `http` and `https` URLs are supported."
                                     },
                                     "id": {
                                         "type": "string",

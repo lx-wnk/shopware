@@ -10,11 +10,16 @@ use Shopware\Core\Framework\Log\Package;
 #[Package('discovery')]
 class FileService
 {
-    private const ALLOWED_PROTOCOLS = ['http', 'https', 'ftp', 'sftp'];
+    private const ALLOWED_PROTOCOLS = ['http', 'https'];
 
     public function isUrl(string $url): bool
     {
         return (bool) filter_var($url, \FILTER_VALIDATE_URL) && $this->isProtocolAllowed($url);
+    }
+
+    public function hasUnsupportedProtocol(string $url): bool
+    {
+        return (bool) filter_var($url, \FILTER_VALIDATE_URL) && !$this->isProtocolAllowed($url);
     }
 
     private function isProtocolAllowed(string $url): bool

@@ -14,6 +14,7 @@ class MediaException extends HttpException
     public const MEDIA_INVALID_URL = 'CONTENT__MEDIA_INVALID_URL';
     public const MEDIA_INVALID_URL_GENERATOR_PARAMETER = 'CONTENT__MEDIA_INVALID_URL_GENERATOR_PARAMETER';
     public const MEDIA_ILLEGAL_URL = 'CONTENT__MEDIA_ILLEGAL_URL';
+    public const MEDIA_UNSUPPORTED_URL_PROTOCOL = 'CONTENT__MEDIA_UNSUPPORTED_URL_PROTOCOL';
     public const MEDIA_DISABLE_URL_UPLOAD_FEATURE = 'CONTENT__MEDIA_DISABLE_URL_UPLOAD_FEATURE';
     public const MEDIA_CANNOT_OPEN_SOURCE_STREAM_TO_READ = 'CONTENT__MEDIA_CANNOT_OPEN_SOURCE_STREAM_TO_READ';
     public const MEDIA_CANNOT_OPEN_SOURCE_STREAM_TO_WRITE = 'CONTENT__MEDIA_CANNOT_OPEN_SOURCE_STREAM_TO_WRITE';
@@ -120,6 +121,16 @@ class MediaException extends HttpException
             Response::HTTP_BAD_REQUEST,
             self::MEDIA_ILLEGAL_URL,
             'Provided URL "{{ url }}" is not allowed.',
+            ['url' => $url]
+        );
+    }
+
+    public static function unsupportedUrlProtocol(string $url): self
+    {
+        return new self(
+            Response::HTTP_BAD_REQUEST,
+            self::MEDIA_UNSUPPORTED_URL_PROTOCOL,
+            'Provided URL "{{ url }}" uses an unsupported protocol. Only "http" and "https" URLs can be uploaded.',
             ['url' => $url]
         );
     }

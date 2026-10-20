@@ -48,6 +48,18 @@ class MediaExceptionTest extends TestCase
         static::assertSame(['url' => $url], $exception->getParameters());
     }
 
+    public function testUnsupportedUrlProtocol(): void
+    {
+        $url = 'ftp://ftp.example.com/file.jpg';
+
+        $exception = MediaException::unsupportedUrlProtocol($url);
+
+        static::assertSame(Response::HTTP_BAD_REQUEST, $exception->getStatusCode());
+        static::assertSame(MediaException::MEDIA_UNSUPPORTED_URL_PROTOCOL, $exception->getErrorCode());
+        static::assertSame('Provided URL "ftp://ftp.example.com/file.jpg" uses an unsupported protocol. Only "http" and "https" URLs can be uploaded.', $exception->getMessage());
+        static::assertSame(['url' => $url], $exception->getParameters());
+    }
+
     public function testDisableUrlUploadFeature(): void
     {
         $exception = MediaException::disableUrlUploadFeature();

@@ -27,9 +27,28 @@ class FileServiceTest extends TestCase
     {
         yield 'http protocol' => ['http://example.com', true];
         yield 'https protocol' => ['https://example.com', true];
+        yield 'ftp protocol' => ['ftp://example.com', false];
+        yield 'sftp protocol' => ['sftp://example.com', false];
+        yield 'unsupported protocol' => ['file://example.com', false];
+        yield 'no protocol' => ['example.com', false];
+        yield 'no url' => ['no url', false];
+    }
+
+    #[DataProvider('unsupportedProtocolDataProvider')]
+    public function testHasUnsupportedProtocol(string $url, bool $expectedResult): void
+    {
+        $fileService = new FileService();
+
+        static::assertSame($expectedResult, $fileService->hasUnsupportedProtocol($url));
+    }
+
+    public static function unsupportedProtocolDataProvider(): \Generator
+    {
+        yield 'http protocol' => ['http://example.com', false];
+        yield 'https protocol' => ['https://example.com', false];
         yield 'ftp protocol' => ['ftp://example.com', true];
         yield 'sftp protocol' => ['sftp://example.com', true];
-        yield 'unsupported protocol' => ['file://example.com', false];
+        yield 'file protocol' => ['file://example.com', true];
         yield 'no protocol' => ['example.com', false];
         yield 'no url' => ['no url', false];
     }

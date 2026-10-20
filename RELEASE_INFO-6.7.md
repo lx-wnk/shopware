@@ -53,6 +53,11 @@ Extensions and integrations that read the product type of older order line items
 
 A criteria that filters, sorts, queries or aggregates by a field the API does not expose (`FRAMEWORK__ACCESSOR_NOT_ALLOWED`) or by a runtime field (`FRAMEWORK__RUNTIME_FIELD_IN_CRITERIA`) is now answered with `400 Bad Request` instead of `500 Internal Server Error`.
 
+### Media upload by URL accepts only HTTP and HTTPS
+
+Since 6.7.13.1, a media upload by URL only downloads `http` and `https` URLs.
+URLs with another protocol, such as `ftp` or `sftp`, are now rejected before the download with `400 Bad Request` and the new error code `CONTENT__MEDIA_UNSUPPORTED_URL_PROTOCOL`, instead of `CONTENT__MEDIA_ILLEGAL_URL`.
+
 # 6.7.16.0
 
 ## Critical Fixes

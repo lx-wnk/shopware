@@ -68,6 +68,10 @@ class FileFetcher
         }
 
         if (!$this->fileService->isUrl($url)) {
+            if ($this->fileService->hasUnsupportedProtocol($url)) {
+                throw MediaException::unsupportedUrlProtocol($url);
+            }
+
             throw MediaException::invalidUrl($url);
         }
 
