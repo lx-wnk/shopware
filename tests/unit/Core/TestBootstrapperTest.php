@@ -228,8 +228,15 @@ class TestBootstrapperTest extends TestCase
     {
         $previousKernel = KernelLifecycleAccessor::currentKernel();
 
+        // a reinstall would look up further services, which must not happen
         $container = static::createStub(ContainerInterface::class);
-        $container->method('get')->willThrowException(new \RuntimeException('Environment variable not found: "APP_SECRET".'));
+        $container->method('get')->willReturnCallback(static function (string $id): never {
+            if ($id === Connection::class) {
+                throw new \RuntimeException('Environment variable not found: "APP_SECRET".');
+            }
+
+            throw new \LogicException(\sprintf('The bootstrapper must not try to reinstall, but requested "%s".', $id));
+        });
 
         $kernel = static::createStub(Kernel::class);
         $kernel->method('getContainer')->willReturn($container);
