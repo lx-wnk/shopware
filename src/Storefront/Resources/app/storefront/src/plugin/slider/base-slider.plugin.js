@@ -8,6 +8,11 @@ export default class BaseSliderPlugin extends Plugin {
         initializedCls: 'js-slider-initialized',
         containerSelector: '[data-base-slider-container=true]',
         controlsSelector: '[data-base-slider-controls=true]',
+        /**
+         * Elements inside cloned slides which are removed from the tab order,
+         * so keyboard and screen reader users only reach the original slides.
+         */
+        clonedSlideFocusableSelector: 'a, button, img, input, select, textarea, iframe, [tabindex]',
         slider: {
             enabled: true,
             responsive: {
@@ -236,7 +241,7 @@ export default class BaseSliderPlugin extends Plugin {
             const item = sliderItems.item(index);
 
             if (item.classList.contains('tns-slide-cloned')) {
-                const selectableElements = item.querySelectorAll('a, button, img');
+                const selectableElements = item.querySelectorAll(this.options.clonedSlideFocusableSelector);
 
                 // Hide selectable elements within cloned elements from screen readers.
                 for (const selectableEl of selectableElements) {

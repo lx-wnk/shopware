@@ -249,6 +249,69 @@ describe('BaseSliderPlugin tests', () => {
         expect(video.play).toHaveBeenCalled();
     });
 
+    test('should remove all focusable elements of cloned slides from the tab order', () => {
+        document.body.innerHTML = `
+            <div id="image-slider" class="base-slider js-slider-initialized" data-base-slider="true">
+                <div data-base-slider-container="true">
+                    <div class="slider-item tns-slide-cloned">
+                        <a href="#">Link</a>
+                        <button type="button">Button</button>
+                        <img src="test.jpg" alt="Test Image">
+                        <input type="number" value="1">
+                        <select><option>1</option></select>
+                        <textarea></textarea>
+                        <div class="custom-focusable" tabindex="0"></div>
+                    </div>
+                    <div class="slider-item">
+                        <input type="number" value="1">
+                        <select><option>1</option></select>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const sliderElement = document.getElementById('image-slider');
+        const sliderItems = sliderElement.querySelectorAll('.slider-item');
+        const [clonedSlide, originalSlide] = sliderItems;
+
+        const sliderInstance = new BaseSliderPlugin(sliderElement);
+        sliderInstance._initAccessibilityTweaks({ slideItems: sliderItems }, sliderElement);
+
+        const clonedElements = clonedSlide.querySelectorAll('a, button, img, input, select, textarea, .custom-focusable');
+        expect(clonedElements).toHaveLength(7);
+        clonedElements.forEach((element) => {
+            expect(element.getAttribute('tabindex')).toBe('-1');
+        });
+
+        originalSlide.querySelectorAll('input, select').forEach((element) => {
+            expect(element.hasAttribute('tabindex')).toBe(false);
+        });
+    });
+
+    test('should use the configured selector for focusable elements of cloned slides', () => {
+        document.body.innerHTML = `
+            <div id="image-slider" class="base-slider js-slider-initialized" data-base-slider="true">
+                <div data-base-slider-container="true">
+                    <div class="slider-item tns-slide-cloned">
+                        <a href="#">Link</a>
+                        <span class="product-box-action" tabindex="0"></span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const sliderElement = document.getElementById('image-slider');
+        const sliderItems = sliderElement.querySelectorAll('.slider-item');
+
+        const sliderInstance = new BaseSliderPlugin(sliderElement, {
+            clonedSlideFocusableSelector: '.product-box-action',
+        });
+        sliderInstance._initAccessibilityTweaks({ slideItems: sliderItems }, sliderElement);
+
+        expect(sliderElement.querySelector('.product-box-action').getAttribute('tabindex')).toBe('-1');
+        expect(sliderElement.querySelector('a').hasAttribute('tabindex')).toBe(false);
+    });
+
     test('should apply accessibility tweaks', () => {
         document.body.innerHTML = `
             <div id="image-slider" class="base-slider image-slider js-slider-initialized" data-base-slider="true" data-base-slider-options="">

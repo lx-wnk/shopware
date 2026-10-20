@@ -53,6 +53,17 @@ Extensions and integrations that read the product type of older order line items
 
 A criteria that filters, sorts, queries or aggregates by a field the API does not expose (`FRAMEWORK__ACCESSOR_NOT_ALLOWED`) or by a runtime field (`FRAMEWORK__RUNTIME_FIELD_IN_CRITERIA`) is now answered with `400 Bad Request` instead of `500 Internal Server Error`.
 
+## Storefront
+
+### Configurable focusable elements in cloned slider slides
+
+`BaseSliderPlugin` removes `input`, `select`, `textarea`, `iframe` and elements with a `tabindex` in cloned slides from the tab order, in addition to links, buttons and images.
+Sliders whose slides contain other focusable elements can set the new `clonedSlideFocusableSelector` option, which also applies to plugins extending `BaseSliderPlugin`:
+
+```twig
+<div data-product-slider="true" data-product-slider-options='{"clonedSlideFocusableSelector": "a, button, input, .my-focusable"}'>
+```
+
 # 6.7.16.0
 
 ## Critical Fixes
