@@ -43,10 +43,14 @@
                                             {% set onlyCompanyRegistration = context.currentCustomerGroup.translated.registrationOnlyCompanyRegistration ?? false %}
                                         {% endif %}
 
+                                        {# Keep the submitted account type when the profile form is shown again after a validation error #}
+                                        {% set accountType = formViolations.getInputData()['accountType'] ?? null %}
+
                                         {% sw_include '@Storefront/storefront/component/address/address-personal.html.twig' with {
                                             prefix: '',
                                             showBirthdayField: config('core.loginRegistration.showBirthdayField'),
                                             data: context.customer,
+                                            accountType: accountType,
                                             onlyCompanyRegistration: onlyCompanyRegistration,
                                             showCompanyFields: true,
                                         } %}

@@ -25,6 +25,8 @@
 
                 {% if onlyCompanyRegistration or (accountType and accountType == constant('Shopware\\Core\\Checkout\\Customer\\CustomerEntity::ACCOUNT_TYPE_BUSINESS')) %}
                     {% set isCompany = true %}
+                {% elseif accountType == constant('Shopware\\Core\\Checkout\\Customer\\CustomerEntity::ACCOUNT_TYPE_PRIVATE') %}
+                    {% set isCompany = false %}
                 {% endif %}
 
                 {% set isLoginPage = false %}
@@ -212,6 +214,11 @@
                 <div class="js-field-toggle-contact-type-company{% if customToggleTarget %}-{{ prefix }}{% endif %}">
                     <div class="row g-2">
                         {% block component_address_personal_company_name %}
+                            {% set companyValue = data.get('company') %}
+                            {% if formViolations.getInputData()['company'] is defined %}
+                                {% set companyValue = formViolations.getInputData()['company'] %}
+                            {% endif %}
+
                             {% if formViolations.getViolations('/company') is not empty %}
                                 {% set violationPath = '/company' %}
                             {% endif %}
@@ -222,7 +229,7 @@
                                     label: 'address.companyNameLabel'|trans|sw_sanitize,
                                     id: idPrefix ~ prefix ~ '-company',
                                     name: 'company',
-                                    value: data.get('company'),
+                                    value: companyValue,
                                     autocomplete: 'section-personal organization',
                                     violationPath: violationPath,
                                     validationRules: 'required',

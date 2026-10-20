@@ -214,6 +214,64 @@ class AccountProfileControllerTest extends TestCase
         static::assertCount(0, $crawler->filter('label[for="vatIds"] .form-required-label'));
     }
 
+    public function testSubmittedBusinessAccountTypeIsKeptAfterValidationError(): void
+    {
+        $context = Context::createDefaultContext();
+        $customer = $this->createCustomer($context);
+
+        static::getContainer()->get(SystemConfigService::class)
+            ->set('core.loginRegistration.showAccountTypeSelection', true);
+
+        $browser = $this->login($customer->getEmail());
+
+        $crawler = $browser->request(
+            'POST',
+            '/account/profile',
+            $this->tokenize('frontend.account.profile.save', [
+                'accountType' => CustomerEntity::ACCOUNT_TYPE_BUSINESS,
+                'company' => 'Example Company',
+                'salutationId' => $this->getValidSalutationId(),
+                'firstName' => 'Max',
+                'lastName' => '',
+            ])
+        );
+
+        static::assertSame(Response::HTTP_OK, $browser->getResponse()->getStatusCode());
+
+        $selectedAccountTypes = $crawler->filter('select[name="accountType"] option[selected]');
+        static::assertCount(1, $selectedAccountTypes);
+        static::assertSame(CustomerEntity::ACCOUNT_TYPE_BUSINESS, $selectedAccountTypes->attr('value'));
+        static::assertSame('Example Company', $crawler->filter('input[name="company"]')->attr('value'));
+    }
+
+    public function testSubmittedPrivateAccountTypeIsKeptAfterValidationError(): void
+    {
+        $context = Context::createDefaultContext();
+        $customer = $this->createBusinessCustomer($context, false);
+
+        static::getContainer()->get(SystemConfigService::class)
+            ->set('core.loginRegistration.showAccountTypeSelection', true);
+
+        $browser = $this->login($customer->getEmail());
+
+        $crawler = $browser->request(
+            'POST',
+            '/account/profile',
+            $this->tokenize('frontend.account.profile.save', [
+                'accountType' => CustomerEntity::ACCOUNT_TYPE_PRIVATE,
+                'salutationId' => $this->getValidSalutationId(),
+                'firstName' => 'Max',
+                'lastName' => '',
+            ])
+        );
+
+        static::assertSame(Response::HTTP_OK, $browser->getResponse()->getStatusCode());
+
+        $selectedAccountTypes = $crawler->filter('select[name="accountType"] option[selected]');
+        static::assertCount(1, $selectedAccountTypes);
+        static::assertSame(CustomerEntity::ACCOUNT_TYPE_PRIVATE, $selectedAccountTypes->attr('value'));
+    }
+
     private function login(string $email): KernelBrowser
     {
         $browser = KernelLifecycleManager::createBrowser($this->getKernel());
