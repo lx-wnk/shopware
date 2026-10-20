@@ -21,7 +21,7 @@
         {%  block sw_media_list_selection_v2_grid_items %}
         <sw-media-list-selection-item-v2
             v-for="(mediaItem, i) in mediaItems"
-            :key="mediaItem?.url"
+            :key="mediaItemKeys[i]"
             v-draggable="{ disabled, dragGroup: 'media-items', data: mediaItem, onDragEnter: onDeboundDragDrop }"
             v-droppable="{ disabled, dragGroup: 'media-items', data: mediaItem }"
             :item="mediaItem"

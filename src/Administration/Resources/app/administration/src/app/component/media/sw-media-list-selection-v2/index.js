@@ -71,7 +71,18 @@ export default {
         mediaItems() {
             // Two rows with columnCount columns
             const columnCount = this.columnCount * 2;
-            const items = [...this.entityMediaItems];
+            const seenItems = new Set();
+            const items = this.entityMediaItems.map((item) => {
+                if (!seenItems.has(item)) {
+                    seenItems.add(item);
+
+                    return item;
+                }
+
+                // The same media can be selected more than once. Use a copy for every further
+                // occurrence, so each one keeps its own position for sorting.
+                return Object.assign(Object.create(Object.getPrototypeOf(item)), item);
+            });
 
             // Add placeholders only if we have less items than two rows
             if (this.currentCount < columnCount) {
@@ -83,6 +94,21 @@ export default {
             });
 
             return items;
+        },
+
+        mediaItemKeys() {
+            const occurrences = {};
+
+            return this.mediaItems.map((item, index) => {
+                if (item.isPlaceholder) {
+                    return `placeholder-${index}`;
+                }
+
+                const key = `${item.id}-${item.url}`;
+                occurrences[key] = (occurrences[key] ?? 0) + 1;
+
+                return `${key}-${occurrences[key]}`;
+            });
         },
 
         gridAutoRows() {
@@ -123,14 +149,14 @@ export default {
         },
 
         createPlaceholders(count) {
-            return new Array(count).fill({
+            return Array.from({ length: count }, () => ({
                 isPlaceholder: true,
                 media: {
                     isPlaceholder: true,
                     name: '',
                 },
                 mediaId: this.currentCount,
-            });
+            }));
         },
 
         async onUploadsAdded({ data }) {
