@@ -6,6 +6,7 @@ namespace Shopware\Tests\Unit\Core;
 
 use Composer\Autoload\ClassLoader;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\DBAL\Result;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -218,6 +219,69 @@ class TestBootstrapperTest extends TestCase
             $bootstrapper->bootstrap();
 
             static::assertNull(KernelLifecycleAccessor::currentKernel(), 'bootstrap() must leave no residual kernel');
+        } finally {
+            KernelLifecycleAccessor::setKernel($previousKernel);
+        }
+    }
+
+    public function testBootstrapRethrowsErrorsUnrelatedToTheDatabase(): void
+    {
+        $previousKernel = KernelLifecycleAccessor::currentKernel();
+
+        $container = static::createStub(ContainerInterface::class);
+        $container->method('get')->willThrowException(new \RuntimeException('Environment variable not found: "APP_SECRET".'));
+
+        $kernel = static::createStub(Kernel::class);
+        $kernel->method('getContainer')->willReturn($container);
+
+        KernelLifecycleAccessor::setKernel($kernel);
+
+        try {
+            $bootstrapper = (new TestBootstrapper())
+                ->setClassLoader(static::createStub(ClassLoader::class))
+                ->setDatabaseUrl('mysql://irrelevant')
+                ->setLoadEnvFile(false);
+
+            $this->expectExceptionObject(new \RuntimeException('Environment variable not found: "APP_SECRET".'));
+
+            $bootstrapper->bootstrap();
+        } finally {
+            KernelLifecycleAccessor::setKernel($previousKernel);
+        }
+    }
+
+    public function testBootstrapInstallsWhenThePluginTableDoesNotExist(): void
+    {
+        $previousKernel = KernelLifecycleAccessor::currentKernel();
+
+        $connection = static::createStub(Connection::class);
+        $connection->method('executeQuery')->willThrowException(static::createStub(TableNotFoundException::class));
+
+        // the install needs further services, so their first lookup shows that the install was started
+        $installStarted = new \RuntimeException('Install started');
+        $container = static::createStub(ContainerInterface::class);
+        $container->method('get')->willReturnCallback(static function (string $id) use ($connection, $installStarted): Connection {
+            if ($id !== Connection::class) {
+                throw $installStarted;
+            }
+
+            return $connection;
+        });
+
+        $kernel = static::createStub(Kernel::class);
+        $kernel->method('getContainer')->willReturn($container);
+
+        KernelLifecycleAccessor::setKernel($kernel);
+
+        try {
+            $bootstrapper = (new TestBootstrapper())
+                ->setClassLoader(static::createStub(ClassLoader::class))
+                ->setDatabaseUrl('mysql://irrelevant')
+                ->setLoadEnvFile(false);
+
+            $this->expectExceptionObject($installStarted);
+
+            $bootstrapper->bootstrap();
         } finally {
             KernelLifecycleAccessor::setKernel($previousKernel);
         }

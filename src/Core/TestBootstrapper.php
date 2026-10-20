@@ -4,6 +4,7 @@ namespace Shopware\Core;
 
 use Composer\Autoload\ClassLoader;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception as DBALException;
 use Shopware\Core\DevOps\StaticAnalyze\StaticAnalyzeKernel;
 use Shopware\Core\Framework\Adapter\Kernel\KernelFactory;
 use Shopware\Core\Framework\Log\Package;
@@ -447,7 +448,8 @@ class TestBootstrapper
             $connection->executeQuery('SELECT 1 FROM `plugin` LIMIT 1')->fetchAllAssociative();
 
             return true;
-        } catch (\Throwable) {
+        } catch (DBALException) {
+            // the database or the plugin table does not exist yet, any other error must not trigger a reinstall
             return false;
         }
     }
