@@ -177,17 +177,30 @@ class ProductAdminSearchIndexerTest extends TestCase
         $boolQueryArray = $boolQuery->toArray();
         $shouldQueries = $boolQueryArray['bool']['should'];
 
-        static::assertCount(2, $shouldQueries);
+        static::assertCount(5, $shouldQueries);
 
+        $exactIdentifierQueries = [];
+        $exactIdentifierBoosts = [];
         $matchQuery = null;
         $simpleQueryStringQuery = null;
         foreach ($shouldQueries as $query) {
-            if (isset($query['match']['textBoosted.ngram'])) {
+            if (isset($query['term'])) {
+                $field = array_key_first($query['term']);
+                $exactIdentifierQueries[] = $field;
+                $exactIdentifierBoosts[] = $query['term'][$field]['boost'];
+            } elseif (isset($query['match']['textBoosted.ngram'])) {
                 $matchQuery = $query['match']['textBoosted.ngram'];
             } elseif (isset($query['simple_query_string'])) {
                 $simpleQueryStringQuery = $query['simple_query_string'];
             }
         }
+
+        static::assertSame(['ean', 'productNumber', 'manufacturerNumber'], $exactIdentifierQueries);
+        static::assertSame([
+            SearchRanking::HIGH_SEARCH_RANKING,
+            SearchRanking::HIGH_SEARCH_RANKING,
+            SearchRanking::HIGH_SEARCH_RANKING,
+        ], $exactIdentifierBoosts);
 
         static::assertNotNull($matchQuery, 'MatchQuery for textBoosted.ngram should be present');
         static::assertSame('test', $matchQuery['query']);
@@ -198,6 +211,33 @@ class ProductAdminSearchIndexerTest extends TestCase
         static::assertSame('test*', $simpleQueryStringQuery['query']);
         static::assertSame(SearchRanking::HIGH_SEARCH_RANKING, $simpleQueryStringQuery['boost']);
         static::assertTrue($simpleQueryStringQuery['lenient']);
+    }
+
+    public function testGlobalCriteriaLowercasesIdentifierTerm(): void
+    {
+        $indexer = new ProductAdminSearchIndexer(
+            $this->createMock(Connection::class),
+            $this->createMock(IteratorFactory::class),
+            $this->createMock(EntityRepository::class),
+            $this->createMock(ElasticsearchFieldBuilder::class),
+            100
+        );
+
+        $result = $indexer->globalCriteria('SW-ÄÖ-1000', new Search());
+
+        $termValues = [];
+        foreach ($result->getQueries()->toArray()['bool']['should'] as $query) {
+            if (isset($query['term'])) {
+                $field = array_key_first($query['term']);
+                $termValues[$field] = $query['term'][$field]['value'];
+            }
+        }
+
+        static::assertSame([
+            'ean' => 'sw-äö-1000',
+            'productNumber' => 'sw-äö-1000',
+            'manufacturerNumber' => 'sw-äö-1000',
+        ], $termValues);
     }
 
     private function getConnection(): Connection

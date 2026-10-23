@@ -199,6 +199,14 @@ class AdminSearcherTest extends TestCase
                                         'lenient' => true,
                                     ],
                                 ],
+                                ...array_map(static fn (string $field): array => [
+                                    'term' => [
+                                        $field => [
+                                            'value' => mb_strtolower($originalTerm),
+                                            'boost' => SearchRanking::HIGH_SEARCH_RANKING,
+                                        ],
+                                    ],
+                                ], ['ean', 'productNumber', 'manufacturerNumber']),
                                 [
                                     'match' => [
                                         'textBoosted.ngram' => [

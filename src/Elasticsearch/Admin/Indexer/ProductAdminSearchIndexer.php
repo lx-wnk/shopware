@@ -7,6 +7,7 @@ use Doctrine\DBAL\Connection;
 use OpenSearchDSL\Query\Compound\BoolQuery;
 use OpenSearchDSL\Query\FullText\MatchQuery;
 use OpenSearchDSL\Query\FullText\SimpleQueryStringQuery;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
 use OpenSearchDSL\Search;
 use Shopware\Core\Content\Product\Aggregate\ProductCategory\ProductCategoryDefinition;
 use Shopware\Core\Content\Product\Aggregate\ProductMedia\ProductMediaDefinition;
@@ -127,6 +128,15 @@ final class ProductAdminSearchIndexer extends AbstractAdminIndexer
     {
         $splitTerms = explode(' ', $term);
         $lastPart = end($splitTerms);
+        $identifierTerm = mb_strtolower($term);
+        $identifierFields = ['ean', 'productNumber', 'manufacturerNumber'];
+
+        foreach ($identifierFields as $field) {
+            $criteria->addQuery(
+                new TermQuery($field, $identifierTerm, ['boost' => SearchRanking::HIGH_SEARCH_RANKING]),
+                BoolQuery::SHOULD
+            );
+        }
 
         $ngramQuery = new MatchQuery('textBoosted.ngram', $term, [
             'boost' => SearchRanking::HIGH_SEARCH_RANKING,
